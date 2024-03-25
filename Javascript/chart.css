@@ -1,0 +1,147 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+.navbar{
+  height: 12%;
+  display: flex;
+  align-items: center;
+}
+nav{
+  flex: 1;
+  text-align: left;
+}
+nav ul li{
+  list-style: none;
+  display: inline-block;
+  margin-left: 20px;
+  margin-top: 25px;
+}
+@media screen and (max-width: 750px) {
+  nav ul li{
+    display: block;
+    margin-top: 10px;
+  }
+}
+nav ul li a{
+  text-decoration: none;
+  font-size: 16px;
+  color: aliceblue;
+}
+nav ul li a:hover{
+  color: rgb(219, 177, 70);
+}
+/*create my logo*/
+.title-text {
+  text-align: center;
+  margin-top: 25px;
+}
+.title-text p {
+  margin: auto;
+  font-size: 15px;
+  font-weight: 600;
+  color:#3b3b3a;
+  font: 90px;
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  padding-right: 20px;
+}
+.title-text p::after {
+  content: '';
+  width: 50px;
+  height: 35px;
+  background: linear-gradient(#474358, #fff);
+  position: absolute;
+  top: -20px;
+  left: 0;
+  z-index: -1;
+  transform: rotate(9deg);
+  border-top-left-radius: 45px;
+  border-bottom-right-radius: 45px;
+}
+/*my background*/
+.background2{
+  min-height: 100vh;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(66, 75, 112, 0.8), rgba(4, 8, 23, 0.7)), url(w-p/Clear.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 0 100vmax rgba(0,0,0,.3);
+  padding-left: 2%;
+  padding-right: 2%;
+  box-sizing: border-box;
+}
+h1{
+  font-size: 20px;
+  font-weight: 200;
+  text-align: start;
+  margin-top: 60px;
+  margin-left: 15px;
+  color: rgb(219, 177, 70);
+}
+.searchW{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  width: 95vw;
+}
+#input{
+  margin-top: 25px;
+  font-size: 17px;
+  background: #eef6f5;
+  border: 0;
+  outline: 0;
+  color: rgb(26, 25, 25);
+  padding: 15px 20px;
+  border-radius: 16px 0px 16px 0px;
+  border-bottom: 3px solid #4e34c0;
+  height: 55px;
+  flex: 1;
+  margin-right: 15px;
+}
+#btn{
+  margin-top: 25px;
+  border: 0;
+  outline: 0;
+  background-color: #eef6f5;
+  padding: 15px 20px;
+  border-radius: 16px;
+  border-bottom: 3px solid #474358;
+  width: 50px;
+  height: 55px;
+  cursor: pointer;
+}
+.searchW #btn img{
+  width: 20px;
+}
+@media screen and (min-width: 750px) {
+  .searchW , h1{
+    width: 50%;
+    align-items: start;
+  }
+}
+.error{
+  color: #eef6f5;
+  text-align: left;
+  margin-left: 10px;
+  font-size: 20px;
+  margin-top: 95px;
+  display: none;
+}
+#myChart{
+  width: 60%;
+  height: 30px;
+  margin-top: 125px;
+}
+#weatherChart{
+  width: 100%;
+  height: 500px;
+}

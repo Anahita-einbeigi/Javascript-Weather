@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avancera-cities</title>
+  <style>
+    body{
+      background-color: grey;
+    }
+    h1{
+      margin-left: 10px;
+      color: greenyellow;
+    }
+    button{
+      width: 40px;
+      height: 40px;
+      margin-top: 0px;
+    }
+    input{
+      width: 300px;
+      height: 40px;
+      margin-top: 5px;
+      border-bottom: 2px solid rgb(200, 238, 9);
+      border-radius: 15px;
+      padding-left: 10px;
+    }
+    .post{
+      padding: 15px;
+      border: 3px solid rgb(209, 241, 143);
+      border-radius: 30px;
+    }
+    .cities{
+      border: 2px solid rgb(200, 244, 111);
+      border-radius: 30px;
+      margin: 10px;
+      padding: 20px;
+      width: 40%;
+    }
+
+  </style>
+</head>
+<body>
+  <h1>städer:</h1>
+  <div class="post">
+    <p>Lägga till ny stad:</p>
+    <input class="input3" type="text" placeholder="Välj en ID som ska raderas eller ändras">
+    <input class="input1" type="text" placeholder="Ange stadens namn">
+    <input class="input2" type="text" placeholder="Skriv befolkning">
+  </div>
+  <div>
+    <button class="btn1" style="width: 80px; color: red; margin-top: 10px; margin-left: 15px;"> Ta bort</button>
+    <button class="btn2"  style="width: 80px;">Ändra</button>
+    <button class="button">Post</button>
+    <button class="btn3">GET</button>
+  </div>
+  <div class="cities"></div>
+  <script>
+
+//type:post,put,del
+const delet = document.querySelector(".btn1");
+const ändra= document.querySelector(".btn2");
+const post= document.querySelector(".button");
+const GET= document.querySelector(".btn3");
+let ID= document.querySelector(".input3").value;
+let name= document.querySelector(".input1").value;
+let befolkning=Number(document.querySelector(".input2").value);
+let url= "https://avancera.app/cities/";
+  function customFetch(url, type, data){
+    if(type=== "GET"){
+      fetch(url,{
+      headers: {'Content-Type': 'application/json'},
+      method: type,
+      })
+      .then((res)=> {
+      if (res.ok){
+        console.log("HTTP request seccessful");}
+        else{
+          console.log("HTTP request unseccessful");
+        }
+        return res;
+      })
+      .then((res)=>res.json())
+      .then((data)=>console.log(data))
+      .catch((error)=>console.log(error));
+    }
+    if( type=="POST" || type=="PUT"){
+    fetch(url,{
+      body: JSON.stringify(data),
+      headers: {'Content-Type': 'application/json'},
+      method: type,
+    })
+    .then((res)=> {
+      if (res.ok){
+        console.log("HTTP request seccessful");}
+        else{
+          console.log("HTTP request unseccessful");
+        }
+        return res;
+    })
+    .then((res)=>res.json())
+    .then((data)=>console.log(data))
+    .catch((error)=>console.log(error));
+    }
+    if(type === "DELETE"){
+      fetch(url + ID,{
+      method: type,
+      })
+      .then((res)=> {
+      if (res.ok){
+        console.log("HTTP request seccessful");}
+        else{
+          console.log("HTTP request unseccessful");
+        }
+      })
+      .catch((error)=>console.log(error));
+    }
+  }
+  //post data with click on button
+  post.addEventListener('click', ()=>customFetch(url, "POST",  {name: name , population: befolkning}));
+
+  //change data with click on button
+  ändra.addEventListener('click', ()=>customFetch(url + ID, "PUT", {name: name, population: befolkning}));
+
+  //DEL data with click on button
+  delet.addEventListener('click', ()=>customFetch(url, "DELETE"));
+
+  //GET data with click on button
+  GET.addEventListener('click', ()=>customFetch(url , "GET"));
+  GET.addEventListener('click', ()=>getCities());
+
+  //cities
+  function getCities(){
+    //Hämta städer och uppdatera webbsidan
+    fetch("https://avancera.app/cities/")
+    .then(response => response.json())
+    .then(result => {
+
+      let city= document.querySelector(".cities")
+      city.innerHTML = ""
+        for (let i = 0; i < result.length; i++) {
+          city.innerHTML += "<div>" + result[i].name + " (" + result[i].population + ")</div>"
+        }
+    })
+  }
+  getCities()
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Väderprgnos för alla städer under dagen.">
+  <title>weather-App</title>
+  <link rel="stylesheet" href="weather.css">
+</head>
+<body class="background2">
+  <div class="navbar">
+    <nav>
+      <ul>
+        <li><a href="index.html">Vädret just nu</a></li>
+        <li><a href="weather.html">Väderprognos under dagen</a></li>
+        <li><a href="chart.html">Diagram</a></li>
+      </ul>
+    </nav>
+    <div class="title-text">
+      <p>WEATHER</p>
+    </div>
+  </div>
+  <h1>Aktuella uppgifter om vädret under en dag :</h1>
+  <div class="searchW">
+    <input id="input" type="text" placeholder="Ange standens namn" spellcheck="false">
+    <button id="btn"><img src="weather-img/search.png" alt="search-icon"></button>
+  </div>
+  <div class="error">
+    <p>Ogiltigt stadsnamn</p>
+  </div>
+  <div class="weather-forecast"></div>
+  <script src="weather.js"></script>
+</body>
+</html>

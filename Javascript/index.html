@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Väderprgnos för alla städer.">
+  <title>Weather-app</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+<body class="header-landingpage">
+  <div class="navbar">
+    <nav>
+      <ul>
+        <li><a href="index.html">Vädret just nu</a></li>
+        <li><a href="weather.html">Väderprognos under dagen</a></li>
+        <li><a href="chart.html">Diagram</a></li>
+      </ul>
+    </nav>
+    <div class="title-text">
+      <p>WEATHER</p>
+    </div>
+  </div>
+  <div class="data-container">
+    <div class="container">
+      <div class="time" id="time">
+      11:20 <span id="am-pm">PM</span>
+      </div>
+      <div class="date" id="date">
+      Friday, 3 November
+      </div>
+    </div>
+    <div class="card">
+      <div class="search">
+        <input type="text" placeholder="Ange standens namn" spellcheck="false">
+        <button><img src="weather-img/search.png" alt="search-icon"></button>
+      </div>
+      <div class="error">
+        <p>Ogiltigt stadsnamn</p>
+      </div>
+      <div class="weather">
+        <img  class="weather-icon" src="weather-img/clouds.png" alt="weather-icon">
+        <h1 class="temprature">6°c</h1>
+        <h2 class="city">Stockholm</h2>
+        <div class="detail">
+          <div class="col">
+            <img src="weather-img/wind.png" alt="vindhastighet">
+            <div>
+              <p class="wind">N 7km/h</p>
+              <p>Vindhastighet</p>
+            </div>
+          </div>
+          <div class="col">
+            <img src="weather-img/humidity.png" alt="fuktighets">
+          <div>
+          <p class="humidity">86%</p>
+          <p>Fuktighet</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>

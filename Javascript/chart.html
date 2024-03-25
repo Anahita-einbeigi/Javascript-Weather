@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Prognos väder infographic diagram och klimatrapport uppgifter.">
+  <title>Weather-chart</title>
+  <link rel="stylesheet" href="chart.css">
+</head>
+<body class="background2">
+  <div class="navbar">
+    <nav>
+      <ul>
+        <li><a href="index.html">Vädret just nu</a></li>
+        <li><a href="weather.html">Väderprognos under dagen</a></li>
+        <li><a href="chart.html">Diagram</a></li>
+      </ul>
+    </nav>
+    <div class="title-text">
+      <p>WEATHER</p>
+    </div>
+  </div>
+  <h1>Aktuella uppgifter om vädret i veckan(Diagram):</h1>
+  <div class="searchW">
+    <input id="input" type="text" placeholder="Ange standens namn" spellcheck="false" />
+    <button id="btn"><img src="weather-img/search.png" alt="search-icon"></button>
+  </div>
+  <div class="error">
+    <p>Ogiltigt stadsnamn</p>
+  </div>
+  <div id="weatherChart">
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+    const weatherChartDiv = document.querySelector("#weatherChart");
+    const cityNameField = document.querySelector("#input");
+    const searchBtn = document.querySelector("#btn");
+
+    const apiKey = "c4469ecbd18e75a602305e38b08651eb";
+    const apiUrl = "https://api.openweathermap.org/data/2.5/forecast?units=metric&q=";
+
+    weatherChartDiv.style.display = "none";
+
+    const getWeatherInfo = async (city) => {
+      weatherChartDiv.innerHTML = '<canvas id="myChart"></canvas>';
+      const weatherChart = document.getElementById('myChart');
+
+      const response = await fetch(`${apiUrl}${city}&appid=${apiKey}`);
+      const data = await response.json();
+      const tempData = [];
+      const datetimeData = [];
+
+      data.list.forEach((item) => {
+        tempData.push(Math.round(item.main.temp));
+      });
+
+      data.list.forEach((item) => {
+        datetimeData.push(item.dt_txt);
+      });
+
+      if (data.cod === "404") {
+        document.querySelector(".error").style.display = "block";
+      } else if (data.cod === "200") {
+        weatherChartDiv.style.display = "flex";
+
+        new Chart(weatherChart, {
+          type: 'bar',
+          data: {
+            labels: datetimeData,
+            datasets: [{
+              label: '# of Votes(temp)',
+              data: tempData,
+              borderWidth: 1
+            }]
+          },
+          options: {
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            }
+          }
+        });
+      }
+    }
+
+    //change result by clicking the button
+    searchBtn.addEventListener("click", () => {
+      getWeatherInfo(cityNameField.value);
+    })
+
+    //change result by Enter on the button
+    document.addEventListener("keydown", (event) => {
+      if (event.key == "Enter") {
+        getWeatherInfo(cityNameField.value)
+      }
+    });
+  </script>
+</body>
+
+</html>

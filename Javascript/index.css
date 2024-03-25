@@ -1,0 +1,185 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+/*wallpaper back of my card*/
+.header-landingpage {
+  min-height: 100vh;
+  width: 100%;
+  background-image: linear-gradient(rgba(80, 82, 90, 0.6), rgba(4, 8, 23, 0.7)), url(w-p/cloudy.jpg);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 0 0 100vmax rgba(0,0,0,.3);
+  padding-left: 2%;
+  padding-right: 2%;
+  box-sizing: border-box;
+}
+.navbar{
+  height: 12%;
+  display: flex;
+  align-items: center;
+}
+nav{
+  flex: 1;
+  text-align: left;
+}
+nav ul li{
+  list-style: none;
+  display: inline-block;
+  margin-left: 20px;
+  margin-top: 25px;
+}
+@media screen and (max-width: 750px) {
+  nav ul li{
+    display: block;
+    margin-top: 10px;
+  }
+}
+nav ul li a{
+  text-decoration: none;
+  font-size: 17px;
+  color: aliceblue;
+}
+nav ul li a:hover{
+  color: rgb(219, 177, 70);
+}
+/*create my logo*/
+.title-text {
+  text-align: center;
+  margin-top: 25px;
+}
+.title-text p {
+  margin: auto;
+  font-size: 15px;
+  font-weight: 600;
+  color:#3b3b3a;
+  font: 90px;
+  position: relative;
+  z-index: 0;
+  display: inline-block;
+  padding-right:10pxpx;
+}
+.title-text p::after {
+  content: '';
+  width: 50px;
+  height: 35px;
+  background: linear-gradient(#474358, #fff);
+  position: absolute;
+  top: -20px;
+  left: 0;
+  z-index: -1;
+  transform: rotate(9deg);
+  border-top-left-radius: 45px;
+  border-bottom-right-radius: 45px;
+}
+/*create my card*/
+body{
+  background-color: rgb(9, 8, 10);
+  color: white;
+}
+.card{
+  background: rgba(255, 255, 255, 0.021);
+  /*background: linear-gradient(135deg, #cdcdd3, #0c071a);*/
+  color: white;
+  width: 90%;
+  max-width: 500px;
+  margin: 38px auto 0;
+  border-radius: 35px;
+  padding: 35px 30px;
+  text-align: center;
+  position: relative;
+  border: 1px solid #eee;
+}
+.search{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.search input{
+  font-size: 17px;
+  background: #eef6f5;
+  border: 0;
+  outline: 0;
+  color: rgb(26, 25, 25);
+  padding: 15px 20px;
+  border-radius: 16px 0px 16px 0px;
+  border-bottom: 3px solid rgb(33, 33, 180);
+  height: 55px;
+  flex: 1;
+  margin-right: 15px;
+}
+.search button{
+  border: 0;
+  outline: 0;
+  background-color: #eef6f5;
+  padding: 15px 20px;
+  border-radius: 16px;
+  border-bottom: 3px solid #474358;
+  width: 50px;
+  height: 55px;
+  cursor: pointer;
+}
+.search button img{
+  width: 20px;
+}
+.weather{
+  display: none;
+}
+.weather-icon{
+  width: 200px;
+  margin-top: 20px;
+}
+.weather h1{
+  font-weight: 400;
+  font-size: x-large;
+  margin-top: -10px;
+}
+.detail{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 47px;
+  padding: 0 25px;
+}
+.col{
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+.col img{
+  width: 28px;
+  margin-right: 15px;
+}
+.wind , .humidity{
+  font-size: 20px;
+  margin-top: -15px;
+
+}
+.error{
+  text-align: left;
+  margin-left: 10px;
+  font-size: 25px;
+  margin-top: 15px;
+  display: none;
+}
+.container{
+  font-weight: 100;
+  margin-left: 45px;
+  margin-top: 48px;
+
+}
+.container .time{
+  font-size: 50px;
+  font-weight: 10px;
+}
+.container #am-pm{
+  font-size: 30px;
+  margin-left: 20px;
+}
+.container .date{
+  font-size: 30px;
+}
